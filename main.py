@@ -1,20 +1,11 @@
-try:
-    number_str = input("Введіть чотиризначне число: ")
-    number = int(number_str)
+number = int(input("Введіть 5-ти значне число: "))
 
-    if 1000 <= number <= 9999:
-        digit1 = number // 1000
-        digit2 = (number % 1000) // 100
-        digit3 = (number % 100) // 10
-        digit4 = number % 10
+digit1 = number // 10000
+digit2 = (number % 10000) // 1000
+digit3 = (number % 1000) // 100
+digit4 = (number % 100) // 10
+digit5 = number % 10
 
-        print(digit1)
-        print(digit2)
-        print(digit3)
-        print(digit4)
-    else:
-        print("Ви ввели не чотиризначне число.")
+reversed_number = digit5 * 10000 + digit4 * 1000 + digit3 * 100 + digit2 * 10 + digit1
 
-except ValueError:
-    print("Ви ввели не ціле число.")
-
+print(reversed_number)
