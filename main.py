@@ -1,11 +1,27 @@
-number = int(input("Введіть 5-ти значне число: "))
+try:
+    number1 = float(input("Введіть перше число: "))
+    operation = input("Введіть операцію (+, -, *, /): ")
+    number2 = float(input("Введіть друге число: "))
 
-digit1 = number // 10000
-digit2 = (number % 10000) // 1000
-digit3 = (number % 1000) // 100
-digit4 = (number % 100) // 10
-digit5 = number % 10
+    if operation == '+':
+        result = number1 + number2
+    elif operation == '-':
+        result = number1 - number2
+    elif operation == '*':
+        result = number1 * number2
+    elif operation == '/':
+        if number2 == 0:
+            print("Помилка: Ділення на нуль!")
+        else:
+            result = number1 / number2
+    else:
+        print("Помилка: Невірна операція!")
+        result = None  # Щоб уникнути невизначеного стану result
 
-reversed_number = digit5 * 10000 + digit4 * 1000 + digit3 * 100 + digit2 * 10 + digit1
+    if result is not None:
+        print("Результат: ", result)
 
-print(reversed_number)
+except ValueError:
+    print("Помилка: Некоректний ввід числа!")
+except Exception as e:
+    print(f"Виникла помилка: {e}")
