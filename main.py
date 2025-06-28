@@ -1,27 +1,41 @@
-try:
-    number1 = float(input("Введіть перше число: "))
-    operation = input("Введіть операцію (+, -, *, /): ")
-    number2 = float(input("Введіть друге число: "))
+def move_last_to_first(input_list):
+  """
+  Переміщує останній елемент списку на початок,
+  зберігаючи відносний порядок інших елементів.
 
-    if operation == '+':
-        result = number1 + number2
-    elif operation == '-':
-        result = number1 - number2
-    elif operation == '*':
-        result = number1 * number2
-    elif operation == '/':
-        if number2 == 0:
-            print("Помилка: Ділення на нуль!")
-        else:
-            result = number1 / number2
-    else:
-        print("Помилка: Невірна операція!")
-        result = None  # Щоб уникнути невизначеного стану result
+  Порожній список або список з одним елементом залишається незмінним.
 
-    if result is not None:
-        print("Результат: ", result)
+  Args:
+    input_list: Вхідний список.
 
-except ValueError:
-    print("Помилка: Некоректний ввід числа!")
-except Exception as e:
-    print(f"Виникла помилка: {e}")
+  Returns:
+    Новий список з переміщеним елементом, або оригінальний список,
+    якщо він порожній або містить один елемент.
+  """
+  # Перевіряємо порожній список або список з одним елементом
+  if len(input_list) <= 1:
+    return input_list
+  else:
+    # Отримуємо останній елемент
+    last_element = input_list[-1]
+    # Отримуємо всі елементи, крім останнього (це буде "хвіст" списку)
+    remaining_elements = input_list[:-1]
+    # Створюємо новий список: останній елемент стає першим, за ним йде решта
+    return [last_element] + remaining_elements
+
+# Приклади для перевірки
+examples = [
+  ([12, 3, 4, 10], [10, 12, 3, 4]),
+  ([1], [1]),
+  ([], []),
+  ([12, 3, 4, 10, 8], [8, 12, 3, 4, 10]),
+  ([5, 6], [6, 5]) # Додатковий приклад для двохелементного списку
+]
+
+print("--- Перевірка роботи функції ---")
+for input_list, expected_output in examples:
+  actual_output = move_last_to_first(input_list)
+  print(f"Вхід: {input_list}")
+  print(f"Очікуваний результат: {expected_output}")
+  print(f"Фактичний результат: {actual_output}")
+  print(f"Результат збігається: {actual_output == expected_output}\n")
