@@ -22,7 +22,5 @@ try:
     if operator in ('+', '-', '*', '/') and not (operator == '/' and num2 == 0):
         print(f"Результат: {num1} {operator} {num2} = {result}")
 
-except ValueError:
-    print("Помилка: Будь ласка, введіть правельні числа!")
 
 
