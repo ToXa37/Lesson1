@@ -1,26 +1,17 @@
-print("Ця програма виконує математичні дії")
+def move_last_to_first(lst):
+    if len(lst) > 1:
+        last_element = lst[-1]
+        lst.insert(0, last_element)
+        lst.pop()
+    return lst
 
-try:
-    num1 = float(input("Введіть перше число: "))
-    operator = input("Введіть дію (+, -, *, /): ")
-    num2 = float(input("Введіть друге число: "))
+test_list = [
+    ([12, 3, 4, 10], [10, 12, 3, 4]),
+    ([1], [1]),
+    ([], []),
+    ([12, 3, 4, 10, 8], [8, 12, 3, 4, 10])
+]
 
-    if operator == '+':
-        result = num1 + num2
-    if operator == '-':
-        result = num1 - num2
-    if operator == '*':
-        result = num1 * num2
-    if operator == '/':
-        if num2 == 0:
-            print("Помилка: Ділення на нуль неіснує!")
-        else:
-            result = num1 / num2
-    else:
-        print("Невірна операція. Використовуйте +, -, * або /.")
-
-    if operator in ('+', '-', '*', '/') and not (operator == '/' and num2 == 0):
-        print(f"Результат: {num1} {operator} {num2} = {result}")
-
-except ValueError:
-    print("Помилка: Введіть правильні числа!")
+for input_list, expected_output in test_list:
+    result = move_last_to_first(input_list.copy())
+    print(f"{input_list} => {result} | {'True' if result == expected_output else 'False'}")
