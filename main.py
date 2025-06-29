@@ -1,4 +1,4 @@
-print("Ця програма виконує прості математичні дії (+, -, *, /)")
+print("Ця програма виконує математичні дії")
 
 try:
     num1 = float(input("Введіть перше число: "))
@@ -7,20 +7,20 @@ try:
 
     if operator == '+':
         result = num1 + num2
-    elif operator == '-':
+    if operator == '-':
         result = num1 - num2
-    elif operator == '*':
+    if operator == '*':
         result = num1 * num2
-    elif operator == '/':
+    if operator == '/':
         if num2 == 0:
             print("Помилка: Ділення на нуль неіснує!")
         else:
             result = num1 / num2
     else:
-        print("Невірна операція. використовуйте +, -, * або /.")
+        print("Невірна операція. Використовуйте +, -, * або /.")
 
     if operator in ('+', '-', '*', '/') and not (operator == '/' and num2 == 0):
         print(f"Результат: {num1} {operator} {num2} = {result}")
 
-
-
+except ValueError:
+    print("Помилка: Введіть правильні числа!")
