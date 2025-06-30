@@ -1,15 +1,10 @@
-test_list = [
-    ([12, 3, 4, 10], [10, 12, 3, 4]),
-    ([1], [1]),
-    ([], []),
-    ([12, 3, 4, 10, 8], [8, 12, 3, 4, 10])
-]
+lst = [1, 2, 3, 4, 5, 6]
 
-for input_list, expected_output in test_list:
-    if len(input_list) > 1:
-        last_element = input_list[-1]
-        result = [last_element] + input_list[:-1]
-    else:
-        result = input_list[:]
+length = len(lst)
+if length == 0:
+    result = [[], []]
+else:
+    middle = (length + 1) // 2
+    result = [lst[:middle], lst[middle:]]
 
-    print(f"{input_list} => {result} | {'True' if result == expected_output else 'False'}")
+print(result)
