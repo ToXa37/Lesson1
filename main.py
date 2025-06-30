@@ -1,19 +1,15 @@
-def split_list(lst):
-    length = len(lst)
-    if length == 0:
-        return [[], []]
-
-    split_index = (length + 1) // 2 
-    return [lst[:split_index], lst[split_index:]]
-
-test_lists = [
-    ([1, 2, 3, 4, 5, 6], [[1, 2, 3], [4, 5, 6]]),
-    ([1, 2, 3], [[1, 2], [3]]),
-    ([1, 2, 3, 4, 5], [[1, 2, 3], [4, 5]]),
-    ([1], [[1], []]),
-    ([], [[], []])
+test_list = [
+    ([12, 3, 4, 10], [10, 12, 3, 4]),
+    ([1], [1]),
+    ([], []),
+    ([12, 3, 4, 10, 8], [8, 12, 3, 4, 10])
 ]
 
-for input_list, expected_output in test_lists:
-    result = split_list(input_list)
+for input_list, expected_output in test_list:
+    if len(input_list) > 1:
+        last_element = input_list[-1]
+        result = [last_element] + input_list[:-1]
+    else:
+        result = input_list[:]
+
     print(f"{input_list} => {result} | {'True' if result == expected_output else 'False'}")
