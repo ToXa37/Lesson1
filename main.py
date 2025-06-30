@@ -1,10 +1,4 @@
-lst = [1, 2, 3, 4, 5, 6,7]
-
-length = len(lst)
-if length == 0:
-    result = [[], []]
-else:
-    middle = (length + 1) // 2
-    result = [lst[:middle], lst[middle:]]
-
-print(result)
+lst = [0, 1, 0, 12, 3]
+non_zeros = [x for x in lst if x != 0]
+lst = non_zeros + [0] * (len(lst) - len(non_zeros))
+print(lst)
